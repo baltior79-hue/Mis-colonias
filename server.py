@@ -7,7 +7,7 @@ UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.3
       "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"}
 BASE = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__, static_folder=None)
-db = sqlite3.connect(os.path.join(BASE, "cache.sqlite"), check_same_thread=False)
+db = sqlite3.connect(os.path.join(os.environ.get("CACHE_DIR", "/tmp"), "cache.sqlite"), check_same_thread=False)
 db.execute("create table if not exists c(k text primary key, t real, v text)")
 lock = threading.Lock()
 S = requests.Session(); S.headers.update(UA)
