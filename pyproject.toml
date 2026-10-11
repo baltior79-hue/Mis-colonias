@@ -1,0 +1,15 @@
+[project]
+name = "mis-colonias"
+version = "1.0.0"
+requires-python = ">=3.12"
+dependencies = [
+    "flask",
+    "requests",
+    "beautifulsoup4",
+    "gunicorn",
+]
+
+# gunicorn y Render siguen en server:app. Al importar el repo, Vercel carga
+# la app desde api/index.py, la función a la que reescribe vercel.json.
+[tool.vercel]
+entrypoint = "api.index:app"
