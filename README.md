@@ -23,4 +23,4 @@ gunicorn server:app --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120
 
 Importa el repositorio en [vercel.com/new](https://vercel.com/new) con el plan Hobby. Vercel detecta Flask por la dependencia en `requirements.txt` y `pyproject.toml` (Python 3.12).
 
-`pyproject.toml` fija el entrypoint en `api.index:app`. `vercel.json` reescribe todas las rutas a `/api/index`, incluye `server.py` y `static/**` en la función y deja la duración máxima en 60 segundos. La caché sqlite se escribe en `CACHE_DIR` o, si no está definida, en `/tmp`.
+`pyproject.toml` fija el entrypoint en `api.index:app`. El preset de Flask entrega cada petición a esa app con su ruta original, así que `vercel.json` no reescribe el tráfico: solo incluye `server.py` y `static/**` en la función y deja la duración máxima en 60 segundos. La caché sqlite se escribe en `CACHE_DIR` o, si no está definida, en `/tmp`.
