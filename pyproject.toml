@@ -9,7 +9,7 @@ dependencies = [
     "gunicorn",
 ]
 
-# gunicorn y Render siguen en server:app. Al importar el repo, Vercel carga
-# la app desde api/index.py, la función a la que reescribe vercel.json.
+# gunicorn y Render siguen en server:app. Vercel carga la misma app desde
+# api/index.py y le pasa la ruta original de cada petición.
 [tool.vercel]
 entrypoint = "api.index:app"
