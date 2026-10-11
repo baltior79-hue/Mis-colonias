@@ -1,0 +1,47 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mis Colonias</title><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#5b3a29">
+<link rel="icon" href="icon.svg">
+<style>
+body{font-family:system-ui,-apple-system,sans-serif;margin:0;background:#faf7f2;color:#2b2118}
+header{background:#5b3a29;color:#fff;padding:14px 16px;font-size:20px;font-weight:600;position:sticky;top:0;z-index:2}
+nav{display:flex;background:#fff;border-bottom:1px solid #e5dccf;position:sticky;top:52px;z-index:2}
+nav button{flex:1;padding:12px;border:0;background:none;font-size:16px;color:#7a6a5a}
+nav button.on{color:#5b3a29;border-bottom:3px solid #5b3a29;font-weight:600}
+main{padding:14px;max-width:680px;margin:auto}
+.btn{display:block;width:100%;padding:14px;border-radius:12px;border:0;background:#5b3a29;color:#fff;font-size:17px;margin:8px 0;text-align:center}
+.btn.sec{background:#e9dccb;color:#5b3a29}.btn.del{background:#b23b3b}
+input[type=text]{width:100%;box-sizing:border-box;padding:12px;font-size:17px;border-radius:10px;border:1px solid #cbbba8}
+.card{background:#fff;border-radius:14px;padding:14px;margin:12px 0;box-shadow:0 1px 3px #0001}
+.muted{color:#8a7a6a;font-size:14px}.err{color:#a33;font-size:14px}
+.res{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid #eee}
+.res img,.thumb{width:56px;height:56px;object-fit:cover;border-radius:8px;background:#eee}
+.chip{display:inline-block;background:#f1e7d8;border-radius:16px;padding:4px 10px;margin:3px;font-size:14px}
+.bar{height:22px;border-radius:6px;background:#c08a5b;color:#fff;font-size:13px;padding-left:8px;line-height:22px;margin:3px 0;white-space:nowrap}
+h3{margin:14px 0 6px;font-size:16px;color:#5b3a29}
+#preview{max-width:100%;border-radius:12px;margin-top:8px}
+.hide{display:none}a{color:#5b3a29}
+</style></head><body>
+<header>🧴 Mis Colonias</header>
+<nav><button id="tNew" class="on">Nueva</button><button id="tList">Mis colonias</button></nav>
+<main>
+<section id="vNew">
+  <label class="btn" for="cam">📷 Hacer foto al frasco</label>
+  <input id="cam" type="file" accept="image/*" capture="environment" class="hide">
+  <label class="btn sec" for="gal">🖼️ Subir una imagen</label>
+  <input id="gal" type="file" accept="image/*" class="hide">
+  <img id="preview" class="hide">
+  <div id="ocrStatus" class="muted"></div>
+  <div class="card">
+    <div class="muted">Marca y nombre (corrígelo si el reconocimiento se equivoca):</div>
+    <input id="q" type="text" placeholder="Ej.: Dior Sauvage">
+    <button class="btn" id="bSearch">🔎 Buscar</button>
+    <div id="results"></div>
+  </div>
+  <div id="ficha"></div>
+</section>
+<section id="vList" class="hide"><div id="list"></div></section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="app.js"></script>
+</body></html>
